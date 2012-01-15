@@ -77,6 +77,11 @@ module Weibo
       perform_post("/statuses/update.json", :body => {:status => status}.merge(query))
     end
 
+    # * statuses/upload_url_text 指定一个图片URL地址抓取后上传并同时发布一条新微博
+    def upload_url_text(query={})
+      perform_post("/statuses/upload_url_text.json", :body => query)
+    end
+
     # DEPRECATED: Use #mentions instead
     #
     # Options: since_id, max_id, since, page
