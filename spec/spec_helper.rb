@@ -1,10 +1,11 @@
 $LOAD_PATH << File.expand_path('../../lib', __FILE__)
+ENV["API_KEY"] = 'dev_key'
+ENV["API_SECRET"] = 'dev_secret'
 require 'weibo'
 
-
 def create_weibo_client
-  Weibo::Config.api_key = 'dev_key'
-  Weibo::Config.api_secret = 'dev_secret'
+  Weibo::Config.api_key = ENV["API_KEY"]
+  Weibo::Config.api_secret = ENV["API_SECRET"]
 
   user_key = 'user_key'
   user_secret = 'user_secret'
