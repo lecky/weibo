@@ -56,19 +56,19 @@ end
 
 
 
-if File.exists?('config/weibo.yml')
-  weibo_oauth = YAML.load_file('config/weibo.yml')[Rails.env || env || 'development']
-  Weibo::Config.api_key = weibo_oauth["api_key"]
-  Weibo::Config.api_secret = weibo_oauth["api_secret"]
-elsif ENV["WEIBO_APP_ID"] and ENV["WEIBO_SECRET"]
-  Weibo::Config.api_key = ENV["WEIBO_APP_ID"]
-  Weibo::Config.api_secret = ENV["WEIBO_SECRET"]
-else 
-  puts "\n\n=========================================================\n\n" +
-       "  You haven't made a config/weibo.yml file.\n\n  You should.  \n\n  The weibo gem will work much better if you do\n\n" + 
-       "  Please set Weibo::Config.api_key and \n  Weibo::Config.api_secret\n  somewhere in your initialization process\n\n" +
-       "=========================================================\n\n"
-end
+=begin
+  # Replace approach with using ENV variable
+  if File.exists?('config/weibo.yml')
+    weibo_oauth = YAML.load_file('config/weibo.yml')[Rails.env || env || 'development']
+    Weibo::Config.api_key = weibo_oauth["api_key"]
+    Weibo::Config.api_secret = weibo_oauth["api_secret"]
+  else 
+    puts "\n\n=========================================================\n\n" +
+         "  You haven't made a config/weibo.yml file.\n\n  You should.  \n\n  The weibo gem will work much better if you do\n\n" + 
+         "  Please set Weibo::Config.api_key and \n  Weibo::Config.api_secret\n  somewhere in your initialization process\n\n" +
+         "=========================================================\n\n"
+  end
+=end
 
 begin
 if Rails
